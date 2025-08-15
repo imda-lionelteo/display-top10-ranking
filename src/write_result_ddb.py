@@ -1,7 +1,9 @@
-import sys
 import json
+import sys
 from typing import Any
+
 from pydantic import BaseModel, Field
+
 
 class ResultItem(BaseModel):
     """
@@ -31,13 +33,19 @@ class ResultItem(BaseModel):
     model: str = Field(min_length=1)  # Ensures model name is not empty
 
     # Flattened metric values (dynamic in original JSON, so use dict)
-    scores: dict[str, Any] = Field(default_factory=dict)  # Initializes scores as an empty dictionary
+    scores: dict[str, Any] = Field(
+        default_factory=dict
+    )  # Initializes scores as an empty dictionary
 
     # Keep raw data if needed
     raw_data_file: str = Field(min_length=1)  # Ensures raw_data_file path is not empty
 
+
 class Result:
-    ignore_keys = ["individual_scores", "grading_criteria"]  # Keys to ignore during processing
+    ignore_keys = [
+        "individual_scores",
+        "grading_criteria",
+    ]  # Keys to ignore during processing
 
     def __init__(self, result_path):
         """Initialize the Result object with the path to the result file.
@@ -46,8 +54,10 @@ class Result:
             result_path (str): The file path to the JSON result file.
         """
         self.result_path = result_path  # Store the path for later use
-    
-    def _flatten_metric_result(self, metric_result_dict: dict, parent_key: str = "", sep: str = "_") -> dict:
+
+    def _flatten_metric_result(
+        self, metric_result_dict: dict, parent_key: str = "", sep: str = "_"
+    ) -> dict:
         """
         Flatten a nested dictionary into a single level with compound keys.
 
@@ -61,10 +71,14 @@ class Result:
         """
         flattened_dict = {}
         for key, value in metric_result_dict.items():
-            new_key = f"{parent_key}{sep}{key}" if parent_key else key  # Create compound key
+            new_key = (
+                f"{parent_key}{sep}{key}" if parent_key else key
+            )  # Create compound key
             if isinstance(value, dict):
                 # Recursively flatten nested dictionaries
-                flattened_dict.update(self._flatten_metric_result(value, parent_key=new_key, sep=sep))
+                flattened_dict.update(
+                    self._flatten_metric_result(value, parent_key=new_key, sep=sep)
+                )
             else:
                 flattened_dict[new_key] = value  # Add non-dict values directly
         return flattened_dict
@@ -73,8 +87,8 @@ class Result:
         """Read and parse the JSON result file.
 
         This method attempts to open the specified result file and load its
-        contents as JSON. If the file is not found, contains invalid JSON, 
-        or any other error occurs, an appropriate error message is printed 
+        contents as JSON. If the file is not found, contains invalid JSON,
+        or any other error occurs, an appropriate error message is printed
         and the program exits.
 
         Returns:
@@ -99,19 +113,19 @@ class Result:
 
         This method reads the JSON result file, extracts relevant metadata and results,
         and formats them into a list of ResultItem objects. Each ResultItem encapsulates
-        the necessary information for storage in DynamoDB, including run metadata, 
+        the necessary information for storage in DynamoDB, including run metadata,
         metric scores, and model details.
 
         Returns:
-            list[ResultItem]: A list of ResultItem objects containing formatted data 
+            list[ResultItem]: A list of ResultItem objects containing formatted data
             ready for DynamoDB storage.
         """
         data = self.read_result_from_file()  # Read data from file
-        
+
         # Extract run_metadata and run_results for processing
         run_metadata = data.get("run_metadata", {})
         run_results = data.get("run_results", [])
-        
+
         items: list[ResultItem] = []
         for result in run_results:
             metadata = result.get("metadata", {})
@@ -133,13 +147,15 @@ class Result:
 
                         # Flatten the metric result values for easier storage and retrieval
                         if isinstance(metric_result_val, dict):
-                            flattened_scores = self._flatten_metric_result(metric_result_val)
+                            flattened_scores = self._flatten_metric_result(
+                                metric_result_val
+                            )
                         else:
                             flattened_scores = metric_result_val
 
                         # Update the scores_flat dictionary with the flattened scores
                         scores_flat[metric_result_key] = flattened_scores
-        
+
             # Create a ResultItem to encapsulate all relevant data for storage in DynamoDB
             item = ResultItem(
                 run_id=run_metadata.get("run_id", ""),
@@ -150,15 +166,16 @@ class Result:
                 metric=metric_name,
                 model=model_name,
                 scores=scores_flat,
-                raw_data_file=self.result_path
+                raw_data_file=self.result_path,
             )
             items.append(item)
-        
+
         # Return the list of ResultItem objects for further processing or storage
         return items
 
     def write_result_to_dynamodb(self, dynamodb_result):
         pass  # Placeholder for DynamoDB write logic
+
 
 def main():
     """
@@ -173,7 +190,7 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python write_result.py <result_path>")
         sys.exit(1)  # Exit if no file path is provided
-    
+
     # Read the result from the file
     result_path = sys.argv[1]
     result = Result(result_path)
@@ -183,6 +200,7 @@ def main():
 
     # Write the result to DynamoDB
     result.write_result_to_dynamodb(dynamodb_result)
+
 
 if __name__ == "__main__":
     main()
