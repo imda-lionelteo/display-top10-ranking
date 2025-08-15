@@ -1,36 +1,40 @@
 {
     "gpt-4o-mini": {
         "model": "gpt-4o-mini",
-        "run_id": "my-run-id",
+        "run_id": "my-run-3",
         "scores": {
-            "attack_success_rate": 50.0
+            "precision": 0.7244378976523876,
+            "recall": 0.530397689342499,
+            "f1": 0.6023018416762352
         },
-        "start_time": "2025-06-04 09:59:37",
-        "end_time": "2025-06-04 09:59:46",
-        "GSI1SK": "2025-06-04 09:59:37",
+        "start_time": "2025-08-12 12:41:09",
+        "end_time": "2025-08-12 12:41:54",
+        "GSI1SK": "2025-08-12 12:41:09",
         "GSI1PK": "MODEL#gpt-4o-mini",
-        "SK": "2025-06-04 09:59:37#refusal_adapter",
-        "PK": "RUN#my-run-id",
-        "duration": 9.150441,
-        "metric": "refusal_adapter",
-        "raw_data_file": "docs/data/my-run-id.json",
-        "test_id": "hallucination"
+        "SK": "2025-08-12 12:41:09#bertscore_adapter",
+        "PK": "RUN#my-run-3",
+        "duration": 45.894664,
+        "metric": "bertscore_adapter",
+        "raw_data_file": "docs/data/res-3.json",
+        "test_id": "qa_3"
     },
     "gpt-4o": {
         "model": "gpt-4o",
-        "run_id": "ms_ga_result_template",
+        "run_id": "my-run-5",
         "scores": {
-            "attack_success_rate": 30.0
+            "precision": 0.3244378976523876,
+            "recall": 0.5430397689342499,
+            "f1": 0.4323018416762352
         },
-        "start_time": "2025-05-15 13:06:09",
-        "end_time": "2025-05-15 13:07:39",
-        "GSI1SK": "2025-05-15 13:06:09",
+        "start_time": "2025-08-13 16:41:09",
+        "end_time": "2025-08-13 16:41:54",
+        "GSI1SK": "2025-08-13 16:41:09",
         "GSI1PK": "MODEL#gpt-4o",
-        "SK": "2025-05-15 13:06:09#refusal_adapter",
-        "PK": "RUN#ms_ga_result_template",
-        "duration": 90.472563,
-        "metric": "refusal_adapter",
-        "raw_data_file": "docs/data/ms_ga_result.json",
-        "test_id": "hallucination"
+        "SK": "2025-08-13 16:41:09#bertscore_adapter",
+        "PK": "RUN#my-run-5",
+        "duration": 44.894664,
+        "metric": "bertscore_adapter",
+        "raw_data_file": "docs/data/res-2.json",
+        "test_id": "qa_2"
     }
 }
