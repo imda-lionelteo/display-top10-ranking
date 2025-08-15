@@ -1,0 +1,285 @@
+{
+    "run_metadata": {
+        "run_id": "testing-metrics",
+        "test_id": "qa_2",
+        "start_time": "2025-08-14 08:30:04",
+        "end_time": "2025-08-14 08:30:47",
+        "duration": 42.264824
+    },
+    "run_results": [
+        {
+            "metadata": {
+                "test_name": "qa_2_bert",
+                "dataset": "qa_2",
+                "metric": {
+                    "name": "bertscore_adapter"
+                },
+                "type": "benchmark",
+                "connector": {
+                    "connector_adapter": "openai_adapter",
+                    "model": "gpt-4o",
+                    "model_endpoint": "",
+                    "params": {},
+                    "connector_pre_prompt": "",
+                    "connector_post_prompt": "",
+                    "system_prompt": ""
+                },
+                "start_time": "2025-08-14 08:30:04",
+                "end_time": "2025-08-14 08:30:47",
+                "duration": 42.263471
+            },
+            "results": {
+                "individual_results": {
+                    "all_results": [
+                        {
+                            "prompt_id": 1,
+                            "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                            "predicted_result": {
+                                "response": "No, the term \"prevailing market rate\" does not have a single, universally accepted meaning in the context of property valuation in Singapore. It is not a term of art with one specific and precise meaning accepted by professionals in the property valuation business. Instead, there are various valuation methodologies and processes that can be used to determine the \"prevailing market rate,\" and professional valuers might have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "context": []
+                            },
+                            "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                            "evaluated_result": {
+                                "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                                "predicted_value": "No, the term \"prevailing market rate\" does not have a single, universally accepted meaning in the context of property valuation in Singapore. It is not a term of art with one specific and precise meaning accepted by professionals in the property valuation business. Instead, there are various valuation methodologies and processes that can be used to determine the \"prevailing market rate,\" and professional valuers might have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                                "score": {
+                                    "precision": 0.8175259828567505,
+                                    "recall": 0.8439608812332153,
+                                    "f1": 0.830988347530365
+                                }
+                            },
+                            "prompt_additional_info": {
+                                "neutral_citation": "[2022] SGHC 139",
+                                "case_title": "Radha Properties Pte Ltd v Lim Poh Suan and others"
+                            },
+                            "state": "completed"
+                        },
+                        {
+                            "prompt_id": 2,
+                            "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                            "predicted_result": {
+                                "response": "In Singapore, the enforceability of an option clause can be significantly affected by how its terms are qualified. An option clause must have terms that are sufficiently certain for it to be enforceable. If an option clause contains terms that are qualified in a way that leaves them vague or indeterminate, the clause may be deemed void for uncertainty.\n\nIn the context of the provided information, an important distinction arises when it comes to phrases like \"to be agreed\". This phrase often implies that future negotiation is needed, which can lead to uncertainty if it pertains to essential terms of the contract. For an option clause to be enforceable, the key terms need to be either expressly stated, determinable by reference to an objective standard, or defined by a process or methodology agreed upon by the parties. \n\nIn the example given, the Masa-Katsu case involved an option clause where the phrase \"to be agreed\" qualified only certain terms, but not the essential terms like \"prevailing market rental\" or \"the current rental plus 30%\". Since these terms were either objectively determinable or fixed, they provided the necessary certainty for the option clause to be enforceable. \n\nHence, in Singapore, if an option clause contains terms qualified by phrases such as \"to be agreed\", especially concerning crucial elements like price, without a clear process to determine these terms, it could lead to the clause being unenforceable due to uncertainty. The courts generally seek clarity and certainty in contracts to uphold them, favoring clauses where essential terms are either definitively stated or objectively ascertainable over those requiring further agreement between the parties.",
+                                "context": []
+                            },
+                            "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                            "evaluated_result": {
+                                "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                                "predicted_value": "In Singapore, the enforceability of an option clause can be significantly affected by how its terms are qualified. An option clause must have terms that are sufficiently certain for it to be enforceable. If an option clause contains terms that are qualified in a way that leaves them vague or indeterminate, the clause may be deemed void for uncertainty.\n\nIn the context of the provided information, an important distinction arises when it comes to phrases like \"to be agreed\". This phrase often implies that future negotiation is needed, which can lead to uncertainty if it pertains to essential terms of the contract. For an option clause to be enforceable, the key terms need to be either expressly stated, determinable by reference to an objective standard, or defined by a process or methodology agreed upon by the parties. \n\nIn the example given, the Masa-Katsu case involved an option clause where the phrase \"to be agreed\" qualified only certain terms, but not the essential terms like \"prevailing market rental\" or \"the current rental plus 30%\". Since these terms were either objectively determinable or fixed, they provided the necessary certainty for the option clause to be enforceable. \n\nHence, in Singapore, if an option clause contains terms qualified by phrases such as \"to be agreed\", especially concerning crucial elements like price, without a clear process to determine these terms, it could lead to the clause being unenforceable due to uncertainty. The courts generally seek clarity and certainty in contracts to uphold them, favoring clauses where essential terms are either definitively stated or objectively ascertainable over those requiring further agreement between the parties.",
+                                "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                                "score": {
+                                    "precision": 0.18634331226348877,
+                                    "recall": 0.4255445599555969,
+                                    "f1": 0.304351806640625
+                                }
+                            },
+                            "prompt_additional_info": {
+                                "neutral_citation": "[2022] SGHC 139",
+                                "case_title": "Radha Properties Pte Ltd v Lim Poh Suan and others"
+                            },
+                            "state": "completed"
+                        }
+                    ]
+                },
+                "evaluation_summary": {
+                    "bertscore": {
+                        "precision": 0.5019346475601196,
+                        "recall": 0.6347527205944061,
+                        "f1": 0.567670077085495,
+                        "individual_scores": [
+                            {
+                                "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                                "predicted_value": "No, the term \"prevailing market rate\" does not have a single, universally accepted meaning in the context of property valuation in Singapore. It is not a term of art with one specific and precise meaning accepted by professionals in the property valuation business. Instead, there are various valuation methodologies and processes that can be used to determine the \"prevailing market rate,\" and professional valuers might have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                                "score": {
+                                    "precision": 0.8175259828567505,
+                                    "recall": 0.8439608812332153,
+                                    "f1": 0.830988347530365
+                                }
+                            },
+                            {
+                                "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                                "predicted_value": "In Singapore, the enforceability of an option clause can be significantly affected by how its terms are qualified. An option clause must have terms that are sufficiently certain for it to be enforceable. If an option clause contains terms that are qualified in a way that leaves them vague or indeterminate, the clause may be deemed void for uncertainty.\n\nIn the context of the provided information, an important distinction arises when it comes to phrases like \"to be agreed\". This phrase often implies that future negotiation is needed, which can lead to uncertainty if it pertains to essential terms of the contract. For an option clause to be enforceable, the key terms need to be either expressly stated, determinable by reference to an objective standard, or defined by a process or methodology agreed upon by the parties. \n\nIn the example given, the Masa-Katsu case involved an option clause where the phrase \"to be agreed\" qualified only certain terms, but not the essential terms like \"prevailing market rental\" or \"the current rental plus 30%\". Since these terms were either objectively determinable or fixed, they provided the necessary certainty for the option clause to be enforceable. \n\nHence, in Singapore, if an option clause contains terms qualified by phrases such as \"to be agreed\", especially concerning crucial elements like price, without a clear process to determine these terms, it could lead to the clause being unenforceable due to uncertainty. The courts generally seek clarity and certainty in contracts to uphold them, favoring clauses where essential terms are either definitively stated or objectively ascertainable over those requiring further agreement between the parties.",
+                                "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                                "score": {
+                                    "precision": 0.18634331226348877,
+                                    "recall": 0.4255445599555969,
+                                    "f1": 0.304351806640625
+                                }
+                            }
+                        ]
+                    },
+                    "grading_criteria": {}
+                }
+            }
+        },
+        {
+            "metadata": {
+                "test_name": "qa_2_rogue",
+                "dataset": "qa_2",
+                "metric": {
+                    "name": "rougescorer_adapter"
+                },
+                "type": "benchmark",
+                "connector": {
+                    "connector_adapter": "openai_adapter",
+                    "model": "gpt-4o",
+                    "model_endpoint": "",
+                    "params": {},
+                    "connector_pre_prompt": "",
+                    "connector_post_prompt": "",
+                    "system_prompt": ""
+                },
+                "start_time": "2025-08-14 08:30:07",
+                "end_time": "2025-08-14 08:30:47",
+                "duration": 39.218879
+            },
+            "results": {
+                "individual_results": {
+                    "all_results": [
+                        {
+                            "prompt_id": 1,
+                            "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                            "predicted_result": {
+                                "response": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. The phrase is not considered a term of art with one specific and precise meaning that is accepted by all professionals in the property valuation business. Different valuation methodologies and processes can be used to determine the \"prevailing market rate,\" and professional valuers may have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "context": []
+                            },
+                            "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                            "evaluated_result": {
+                                "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                                "predicted_value": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. The phrase is not considered a term of art with one specific and precise meaning that is accepted by all professionals in the property valuation business. Different valuation methodologies and processes can be used to determine the \"prevailing market rate,\" and professional valuers may have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                                "score": {
+                                    "rouge1": {
+                                        "recall": 0.8461538461538461,
+                                        "precision": 0.7857142857142857,
+                                        "fmeasure": 0.8148148148148148
+                                    },
+                                    "rouge2": {
+                                        "recall": 0.6883116883116883,
+                                        "precision": 0.6385542168674698,
+                                        "fmeasure": 0.6625000000000001
+                                    },
+                                    "rougeLsum": {
+                                        "recall": 0.8333333333333334,
+                                        "precision": 0.7738095238095238,
+                                        "fmeasure": 0.8024691358024691
+                                    }
+                                }
+                            },
+                            "prompt_additional_info": {
+                                "neutral_citation": "[2022] SGHC 139",
+                                "case_title": "Radha Properties Pte Ltd v Lim Poh Suan and others"
+                            },
+                            "state": "completed"
+                        },
+                        {
+                            "prompt_id": 2,
+                            "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                            "predicted_result": {
+                                "response": "In Singapore, the enforceability of an option clause in a contract can be significantly impacted by how its terms are qualified. Generally, the key question is whether the option clause is sufficiently certain in its terms to be enforceable. Here are some ways the qualification of terms affects enforceability:\n\n1. **Certainty and Definiteness**: For an option clause to be enforceable, its terms must be clear and definite. Phrases like \"to be agreed\" can introduce uncertainty if they relate to essential terms, as parties must have a clear agreement on those terms for the contract to be binding. If a term is left open for future negotiation without a clear method for its determination, it may render the clause void for uncertainty.\n\n2. **Determination of Key Terms**: If the option clause includes a mechanism or clear standard for determining any critical terms (such as rental amounts), it is more likely to be enforceable. In the context you provided, mentioning \"prevailing market rental\" or \"the current rental plus 30%\" provides a standard for determining rental amounts, which helps mitigate uncertainty, whereas leaving it \"to be agreed\" without further specification introduces ambiguity.\n\n3. **Essential Terms**: When an essential term, like rental in a lease or an option to renew, is qualified by \"to be agreed,\" it may lead to unenforceability if no objective standard or method is provided to resolve disputes over that term.\n\n4. **Legal Precedents**: Singaporean courts, as shown in the Masa-Katsu case you referenced, often distinguish cases based on whether essential terms are objectively ascertainable. If an option clause specifies a clear, determinable method for setting terms, courts are more inclined to enforce it as opposed to clauses requiring further agreement on critical terms.\n\nThus, in Singaporean contract law, the enforceability of an option clause hinges on the precision and clarity of its terms, especially concerning essential elements of the agreement.",
+                                "context": []
+                            },
+                            "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                            "evaluated_result": {
+                                "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                                "predicted_value": "In Singapore, the enforceability of an option clause in a contract can be significantly impacted by how its terms are qualified. Generally, the key question is whether the option clause is sufficiently certain in its terms to be enforceable. Here are some ways the qualification of terms affects enforceability:\n\n1. **Certainty and Definiteness**: For an option clause to be enforceable, its terms must be clear and definite. Phrases like \"to be agreed\" can introduce uncertainty if they relate to essential terms, as parties must have a clear agreement on those terms for the contract to be binding. If a term is left open for future negotiation without a clear method for its determination, it may render the clause void for uncertainty.\n\n2. **Determination of Key Terms**: If the option clause includes a mechanism or clear standard for determining any critical terms (such as rental amounts), it is more likely to be enforceable. In the context you provided, mentioning \"prevailing market rental\" or \"the current rental plus 30%\" provides a standard for determining rental amounts, which helps mitigate uncertainty, whereas leaving it \"to be agreed\" without further specification introduces ambiguity.\n\n3. **Essential Terms**: When an essential term, like rental in a lease or an option to renew, is qualified by \"to be agreed,\" it may lead to unenforceability if no objective standard or method is provided to resolve disputes over that term.\n\n4. **Legal Precedents**: Singaporean courts, as shown in the Masa-Katsu case you referenced, often distinguish cases based on whether essential terms are objectively ascertainable. If an option clause specifies a clear, determinable method for setting terms, courts are more inclined to enforce it as opposed to clauses requiring further agreement on critical terms.\n\nThus, in Singaporean contract law, the enforceability of an option clause hinges on the precision and clarity of its terms, especially concerning essential elements of the agreement.",
+                                "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                                "score": {
+                                    "rouge1": {
+                                        "recall": 0.7410714285714286,
+                                        "precision": 0.266025641025641,
+                                        "fmeasure": 0.39150943396226423
+                                    },
+                                    "rouge2": {
+                                        "recall": 0.32432432432432434,
+                                        "precision": 0.1157556270096463,
+                                        "fmeasure": 0.17061611374407581
+                                    },
+                                    "rougeLsum": {
+                                        "recall": 0.5089285714285714,
+                                        "precision": 0.18269230769230768,
+                                        "fmeasure": 0.2688679245283019
+                                    }
+                                }
+                            },
+                            "prompt_additional_info": {
+                                "neutral_citation": "[2022] SGHC 139",
+                                "case_title": "Radha Properties Pte Ltd v Lim Poh Suan and others"
+                            },
+                            "state": "completed"
+                        }
+                    ]
+                },
+                "evaluation_summary": {
+                    "rougescorer": {
+                        "score": {
+                            "avg_rouge1": {
+                                "recall": 0.7936126373626373,
+                                "precision": 0.5258699633699634,
+                                "fmeasure": 0.6031621243885394
+                            },
+                            "avg_rouge2": {
+                                "recall": 0.5063180063180064,
+                                "precision": 0.37715492193855804,
+                                "fmeasure": 0.41655805687203795
+                            },
+                            "avg_rougeLsum": {
+                                "recall": 0.6711309523809523,
+                                "precision": 0.4782509157509158,
+                                "fmeasure": 0.5356685301653855
+                            }
+                        },
+                        "individual_scores": [
+                            {
+                                "prompt": "**Context:**\nI further noted that the phrase \"prevailing market rate\" was not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There were also many different possible valuation methodologies and processes (eg , whether by a joint valuer, by the average of the valuations from three independent valuers, by an assessment by an agreed arbitrator or by a court of law) by which to determine the \"prevailing market rate\" and even professional valuers might have differing views of what the \"prevailing market rate\" might be depending on what valuation methodologies and reference points were adopted.\n\n**Question:**\nIn the context of property valuation in Singapore, does the term \"prevailing market rate\" have a single, universally accepted meaning?",
+                                "predicted_value": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. The phrase is not considered a term of art with one specific and precise meaning that is accepted by all professionals in the property valuation business. Different valuation methodologies and processes can be used to determine the \"prevailing market rate,\" and professional valuers may have differing views on what the rate might be, depending on the methodologies and reference points they adopt.",
+                                "target": "No, in the context of property valuation in Singapore, the term \"prevailing market rate\" does not have a single, universally accepted meaning. It is not a term of art with only one specific and precise meaning accepted by professional persons in the property valuation business. There are many different possible valuation methodologies and processes by which to determine the \"prevailing market rate,\" and even professional valuers might have differing views depending on the methodologies and reference points adopted.",
+                                "score": {
+                                    "rouge1": {
+                                        "recall": 0.8461538461538461,
+                                        "precision": 0.7857142857142857,
+                                        "fmeasure": 0.8148148148148148
+                                    },
+                                    "rouge2": {
+                                        "recall": 0.6883116883116883,
+                                        "precision": 0.6385542168674698,
+                                        "fmeasure": 0.6625000000000001
+                                    },
+                                    "rougeLsum": {
+                                        "recall": 0.8333333333333334,
+                                        "precision": 0.7738095238095238,
+                                        "fmeasure": 0.8024691358024691
+                                    }
+                                }
+                            },
+                            {
+                                "prompt": "**Context:**\nIn my view, the option clause in Masa-Katsu was very different because the important phrase \"to be agreed\" qualified only the words \"upon the terms and conditions\" but not \"prevailing market rental\". That phrase \"to be agreed\" similarly could not possibly qualify the words \"the current rental plus 30%\" as that was a fixed and determinable number (after performing a simple computation) for which no further agreement of the parties was required for its determination. In Masa-Katsu , the rental was simply to be fixed at the \"prevailing market rental\" or \"the current rental plus 30% whichever is the lower\". Unlike the present case, agreement of the parties was not specified as an essential requirement or an agreed process/methodology for determining the \"prevailing market rental\" in the option clause in Masa-Katsu. Hence, the fact that the option clause there was held not to be void for uncertainty was not at all helpful to the plaintiff's case. I distinguished Masa-Katsu.\n\n**Question:**\nIn Singapore, how does the qualification of terms in an option clause affect its enforceability?",
+                                "predicted_value": "In Singapore, the enforceability of an option clause in a contract can be significantly impacted by how its terms are qualified. Generally, the key question is whether the option clause is sufficiently certain in its terms to be enforceable. Here are some ways the qualification of terms affects enforceability:\n\n1. **Certainty and Definiteness**: For an option clause to be enforceable, its terms must be clear and definite. Phrases like \"to be agreed\" can introduce uncertainty if they relate to essential terms, as parties must have a clear agreement on those terms for the contract to be binding. If a term is left open for future negotiation without a clear method for its determination, it may render the clause void for uncertainty.\n\n2. **Determination of Key Terms**: If the option clause includes a mechanism or clear standard for determining any critical terms (such as rental amounts), it is more likely to be enforceable. In the context you provided, mentioning \"prevailing market rental\" or \"the current rental plus 30%\" provides a standard for determining rental amounts, which helps mitigate uncertainty, whereas leaving it \"to be agreed\" without further specification introduces ambiguity.\n\n3. **Essential Terms**: When an essential term, like rental in a lease or an option to renew, is qualified by \"to be agreed,\" it may lead to unenforceability if no objective standard or method is provided to resolve disputes over that term.\n\n4. **Legal Precedents**: Singaporean courts, as shown in the Masa-Katsu case you referenced, often distinguish cases based on whether essential terms are objectively ascertainable. If an option clause specifies a clear, determinable method for setting terms, courts are more inclined to enforce it as opposed to clauses requiring further agreement on critical terms.\n\nThus, in Singaporean contract law, the enforceability of an option clause hinges on the precision and clarity of its terms, especially concerning essential elements of the agreement.",
+                                "target": "In Singapore, the qualification of terms in an option clause can significantly affect its enforceability. For instance, if the phrase \"to be agreed\" qualifies only certain terms such as \"upon the terms and conditions\" but not others like \"prevailing market rental,\" it can lead to different interpretations. If a term like \"the current rental plus 30%\" is a fixed and determinable number, it does not require further agreement between the parties for its determination. Therefore, the enforceability of the option clause may depend on whether the agreement of the parties is specified as an essential requirement or if there is an agreed process/methodology for determining key terms like \"prevailing market rental.\"",
+                                "score": {
+                                    "rouge1": {
+                                        "recall": 0.7410714285714286,
+                                        "precision": 0.266025641025641,
+                                        "fmeasure": 0.39150943396226423
+                                    },
+                                    "rouge2": {
+                                        "recall": 0.32432432432432434,
+                                        "precision": 0.1157556270096463,
+                                        "fmeasure": 0.17061611374407581
+                                    },
+                                    "rougeLsum": {
+                                        "recall": 0.5089285714285714,
+                                        "precision": 0.18269230769230768,
+                                        "fmeasure": 0.2688679245283019
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "grading_criteria": {}
+                }
+            }
+        }
+    ]
+}
