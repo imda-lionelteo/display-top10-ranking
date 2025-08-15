@@ -7,10 +7,10 @@
 </head>
 <body style="font-family: sans-serif; text-align: center;">
   <h1>Model Scores Visualization</h1>
-  <div id="chartsContainer"></div>
+  <div id="chartsContainer" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;"></div>
 
   <script>
-    const resultFilePath = process.env.RESULT_FILE_PATH;
+    const resultFilePath = 'data/models-ranking-results.json';
 
     fetch(resultFilePath)
       .then(response => response.json())
