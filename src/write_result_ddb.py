@@ -1,20 +1,23 @@
 import json
+import os
 import sys
+from decimal import Decimal
 from typing import Any
 
+import boto3
 from pydantic import BaseModel, Field
 
 
 class ResultItem(BaseModel):
     """
-    A class to represent a result item with core metadata and scores.
+    Represents a result item with core metadata and scores for DynamoDB storage.
 
     Attributes:
         run_id (str): The unique identifier for the run, must be a non-empty string.
         test_id (str): The unique identifier for the test, must be a non-empty string.
         start_time (str): The start time of the test, must be a non-empty string.
         end_time (str): The end time of the test, must be a non-empty string.
-        duration (float): The duration of the test in seconds, must be greater than 0.
+        duration (Decimal): The duration of the test in seconds, must be greater than 0.
         metric (str): The name of the metric used, must be a non-empty string.
         model (str): The name of the model used, must be a non-empty string.
         scores (dict[str, Any]): A dictionary containing flattened metric values.
@@ -26,7 +29,7 @@ class ResultItem(BaseModel):
     test_id: str = Field(min_length=1)  # Ensures test_id is not empty
     start_time: str = Field(min_length=1)  # Ensures start_time is not empty
     end_time: str = Field(min_length=1)  # Ensures end_time is not empty
-    duration: float = Field(gt=0)  # Ensures duration is positive
+    duration: Decimal = Field(gt=0)  # Ensures duration is positive
 
     # Core keys from metadata
     metric: str = Field(min_length=1)  # Ensures metric name is not empty
@@ -47,8 +50,9 @@ class Result:
         "grading_criteria",
     ]  # Keys to ignore during processing
 
-    def __init__(self, result_path):
-        """Initialize the Result object with the path to the result file.
+    def __init__(self, result_path: str):
+        """
+        Initialize the Result object with the path to the result file.
 
         Args:
             result_path (str): The file path to the JSON result file.
@@ -83,8 +87,9 @@ class Result:
                 flattened_dict[new_key] = value  # Add non-dict values directly
         return flattened_dict
 
-    def read_result_from_file(self):
-        """Read and parse the JSON result file.
+    def read_result_from_file(self) -> dict:
+        """
+        Read and parse the JSON result file.
 
         This method attempts to open the specified result file and load its
         contents as JSON. If the file is not found, contains invalid JSON,
@@ -96,7 +101,7 @@ class Result:
         """
         try:
             with open(self.result_path, "r") as f:
-                return json.load(f)  # Load JSON data from file
+                return json.load(f, parse_float=Decimal)  # Load JSON data from file
         except FileNotFoundError:
             print(f"Error: The file {self.result_path} was not found.")
             sys.exit(1)  # Exit if file is not found
@@ -162,7 +167,7 @@ class Result:
                 test_id=run_metadata.get("test_id", ""),
                 start_time=run_metadata.get("start_time", ""),
                 end_time=run_metadata.get("end_time", ""),
-                duration=run_metadata.get("duration", 0.0),
+                duration=run_metadata.get("duration", Decimal(0)),
                 metric=metric_name,
                 model=model_name,
                 scores=scores_flat,
@@ -173,8 +178,50 @@ class Result:
         # Return the list of ResultItem objects for further processing or storage
         return items
 
-    def write_result_to_dynamodb(self, dynamodb_result):
-        pass  # Placeholder for DynamoDB write logic
+    def write_result_to_dynamodb(
+        self, dynamodb_result: list[ResultItem], table_name: str
+    ):
+        """
+        Write formatted result items to a DynamoDB table.
+
+        This method takes a list of ResultItem objects and writes them to the specified
+        DynamoDB table using batch writing for efficiency. Each item is transformed into
+        a dictionary suitable for DynamoDB storage, including partition and sort keys
+        for indexing and retrieval.
+
+        Args:
+            dynamodb_result (list): A list of ResultItem objects to be stored in DynamoDB.
+            table_name (str): The name of the DynamoDB table where the results will be stored.
+        """
+        dynamodb = boto3.resource("dynamodb")  # Initialize DynamoDB resource
+        table = dynamodb.Table(table_name)  # Access the specified table
+
+        with (
+            table.batch_writer() as batch
+        ):  # Use batch writer for efficient bulk writing
+            for result_item in dynamodb_result:
+                item_dict = result_item.model_dump()  # Convert ResultItem to dictionary
+
+                # Construct partition key using run_id for unique identification
+                pk = f"RUN#{item_dict['run_id']}"
+                # Construct sort key using start_time and metric for time ordering
+                sk = f"{item_dict['start_time']}#{item_dict['metric']}"
+
+                # Construct GSI partition key using model for model-based queries
+                gsi1pk = f"MODEL#{item_dict['model']}"
+                # Construct GSI sort key using start_time for time-based queries
+                gsi1sk = item_dict["start_time"]
+
+                # Prepare the item for DynamoDB with necessary keys and attributes
+                dynamo_item = {
+                    "PK": pk,
+                    "SK": sk,
+                    "GSI1PK": gsi1pk,
+                    "GSI1SK": gsi1sk,
+                    **item_dict,  # Include all other attributes from the ResultItem
+                }
+
+                batch.put_item(Item=dynamo_item)  # Add item to batch for writing
 
 
 def main():
@@ -188,7 +235,7 @@ def main():
     the result for DynamoDB.
     """
     if len(sys.argv) < 2:
-        print("Usage: python write_result.py <result_path>")
+        print("Usage: python write_result_ddb.py <result_path>")
         sys.exit(1)  # Exit if no file path is provided
 
     # Read the result from the file
@@ -199,7 +246,10 @@ def main():
     dynamodb_result = result.format_result_for_dynamodb()
 
     # Write the result to DynamoDB
-    result.write_result_to_dynamodb(dynamodb_result)
+    dynamodb_table_name = os.getenv("DYNAMODB_TABLE_NAME")
+    if not dynamodb_table_name:
+        raise ValueError("DYNAMODB_TABLE_NAME environment variable is not set")
+    result.write_result_to_dynamodb(dynamodb_result, dynamodb_table_name)
 
 
 if __name__ == "__main__":
