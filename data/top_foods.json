@@ -1,0 +1,13 @@
+[
+    {"name": "Sushi", "rating": 4.9},
+    {"name": "Pizza", "rating": 4.8},
+    {"name": "Burger", "rating": 4.7},
+    {"name": "Ramen", "rating": 4.7},
+    {"name": "Pasta", "rating": 4.6},
+    {"name": "Steak", "rating": 4.6},
+    {"name": "Tacos", "rating": 4.5},
+    {"name": "Curry", "rating": 4.5},
+    {"name": "Dumplings", "rating": 4.4},
+    {"name": "Ice Cream", "rating": 4.4}
+  ]
+  
