@@ -2,35 +2,51 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Top 10 Best Reviewed Foods</title>
+  <title>Model Scores Visualization</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body style="font-family: sans-serif; text-align: center;">
-  <h1>Top 10 Best Reviewed Foods</h1>
-  <canvas id="foodChart" width="800" height="400"></canvas>
+  <h1>Model Scores Visualization</h1>
+  <div id="chartsContainer"></div>
 
   <script>
-    fetch('data/top_foods.json')
+    const resultFilePath = process.env.RESULT_FILE_PATH;
+
+    fetch(resultFilePath)
       .then(response => response.json())
       .then(data => {
-        const labels = data.map(item => item.name);
-        const ratings = data.map(item => item.rating);
+        const labels = Object.keys(data);
 
-        new Chart(document.getElementById('foodChart'), {
-          type: 'bar',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: 'Rating',
-              data: ratings,
-              backgroundColor: 'rgba(75, 192, 192, 0.6)'
-            }]
-          },
-          options: {
-            scales: {
-              y: { beginAtZero: true }
-            }
-          }
+        // Iterate over each model to create charts for each score type
+        labels.forEach(model => {
+          const scores = data[model].scores;
+          const scoreTypes = Object.keys(scores);
+
+          scoreTypes.forEach(scoreType => {
+            const chartContainer = document.createElement('div');
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            chartContainer.appendChild(canvas);
+            document.getElementById('chartsContainer').appendChild(chartContainer);
+
+            new Chart(canvas, {
+              type: 'bar',
+              data: {
+                labels: [model],
+                datasets: [{
+                  label: scoreType,
+                  data: [scores[scoreType]],
+                  backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                }]
+              },
+              options: {
+                scales: {
+                  y: { beginAtZero: true }
+                }
+              }
+            });
+          });
         });
       });
   </script>
