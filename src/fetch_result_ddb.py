@@ -1,8 +1,16 @@
 import json
 import os
+from decimal import Decimal
 
 import boto3
 from boto3.dynamodb.conditions import Key
+
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return json.JSONEncoder.default(self, obj)
 
 
 def fetch_result_from_ddb(table_name: str):
@@ -83,8 +91,9 @@ def main():
     models_results = fetch_result_from_ddb(dynamodb_table_name)
 
     # Write the unique models results to a JSON file for persistent storage and future reference
-    with open(result_file_path, "w", encoding="utf-8") as f:
-        json.dump(models_results, f, indent=2)
+    # Open the file in write mode, creating it if it doesn't exist, and overwrite if it exists
+    with open(result_file_path, "w+", encoding="utf-8") as f:
+        json.dump(models_results, f, indent=4, cls=DecimalEncoder)
 
 
 if __name__ == "__main__":
