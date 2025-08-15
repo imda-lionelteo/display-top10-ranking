@@ -7,7 +7,7 @@
 </head>
 <body style="font-family: sans-serif; text-align: center;">
   <h1>Model Scores Visualization</h1>
-  <div id="chartsContainer" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;"></div>
+  <div id="chartContainer" style="width: 800px; margin: auto;"></div>
 
   <script>
     const resultFilePath = 'data/models-ranking-results.json';
@@ -15,40 +15,43 @@
     fetch(resultFilePath)
       .then(response => response.json())
       .then(data => {
-        const labels = Object.keys(data);
+        const models = Object.keys(data);
 
-        // Iterate over each model to create charts for each score type
-        labels.forEach(model => {
-          const scores = data[model].scores;
-          const scoreTypes = Object.keys(scores);
+        // Dynamically get all score types from the first model
+        const scoreTypes = Object.keys(data[models[0]].scores);
 
-          scoreTypes.forEach(scoreType => {
-            const chartContainer = document.createElement('div');
-            const canvas = document.createElement('canvas');
-            canvas.width = 800;
-            canvas.height = 400;
-            chartContainer.appendChild(canvas);
-            document.getElementById('chartsContainer').appendChild(chartContainer);
-
-            new Chart(canvas, {
-              type: 'bar',
-              data: {
-                labels: [model],
-                datasets: [{
-                  label: scoreType,
-                  data: [scores[scoreType]],
-                  backgroundColor: 'rgba(75, 192, 192, 0.6)'
-                }]
-              },
-              options: {
-                scales: {
-                  y: { beginAtZero: true }
-                }
-              }
-            });
-          });
+        // Prepare datasets for Chart.js
+        const datasets = scoreTypes.map((scoreType, index) => {
+          const values = models.map(model => data[model].scores[scoreType]);
+          const color = `hsl(${index * 60 % 360}, 70%, 50%)`; // generate distinct colors
+          return {
+            label: scoreType,
+            data: values,
+            backgroundColor: color
+          };
         });
-      });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 800;
+        canvas.height = 400;
+        document.getElementById('chartContainer').appendChild(canvas);
+
+        new Chart(canvas, {
+          type: 'bar',
+          data: {
+            labels: models,
+            datasets: datasets
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true },
+              x: { stacked: false }
+            }
+          }
+        });
+      })
+      .catch(err => console.error("Error loading JSON:", err));
   </script>
 </body>
 </html>
